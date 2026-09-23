@@ -1,4 +1,5 @@
 using System;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class NPC : MonoBehaviour
@@ -7,6 +8,8 @@ public class NPC : MonoBehaviour
     GameObject groundGo;
     [SerializeField] private Color newColor;
     private SpriteRenderer spriteRenderer;
+  
+    [SerializeField] private float colorchangespeed = 0.2f;
     private void Awake()
     {
         spriteRenderer = gameObject.GetComponent<SpriteRenderer>();               ///
@@ -26,6 +29,9 @@ public class NPC : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        float hue = (Time.time * 0.2F) + 1;
+        Color color = Color.HSVToRGB(hue, 1f, 1f);
+        ChangeColor(color);
     }
     /// <summary>
     /// Debug lo muestra en la consola, también nos dice donde se rompe el código.
@@ -35,6 +41,10 @@ public class NPC : MonoBehaviour
     /// [NonSerialized] "Aunque el valor sea público, no lo enseñes por Unity."
     /// Tab sirve para colocar la respuesta si ya sale (Ej: Autocompleta.. pu*** te pone public)
     /// </summary>
+    /// 
+
+ 
+    
     private void ChangeColor(Color color)
     {
         spriteRenderer.color = color;

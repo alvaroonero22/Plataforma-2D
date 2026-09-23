@@ -131,6 +131,7 @@ GameObject:
   - component: {fileID: 510833762}
   - component: {fileID: 510833761}
   - component: {fileID: 510833764}
+  - component: {fileID: 510833765}
   m_Layer: 0
   m_Name: Ground
   m_TagString: Untagged
@@ -256,6 +257,18 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &510833765
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 510833759}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cb83601f250d4742bdd4c4c70ceba34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: "Assembly-CSharp::Desesperaci\xF3n"
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -489,7 +502,7 @@ GameObject:
   - component: {fileID: 1946177824}
   - component: {fileID: 1946177823}
   - component: {fileID: 1946177822}
-  - component: {fileID: 1946177821}
+  - component: {fileID: 1946177826}
   m_Layer: 0
   m_Name: NPC square
   m_TagString: Untagged
@@ -497,19 +510,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1946177821
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1946177820}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ae97f7defd12f1749ae23c256668d142, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NPC
-  newColor: {r: 1, g: 0, b: 1, a: 1}
 --- !u!50 &1946177822
 Rigidbody2D:
   serializedVersion: 5
@@ -651,12 +651,24 @@ Transform:
   m_GameObject: {fileID: 1946177820}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.0222, y: -0.33771, z: 0}
+  m_LocalPosition: {x: 0.99, y: 4.26, z: 0}
   m_LocalScale: {x: 3.7581193, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1946177826
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1946177820}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cb83601f250d4742bdd4c4c70ceba34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: "Assembly-CSharp::Desesperaci\xF3n"
 --- !u!1 &1973917664
 GameObject:
   m_ObjectHideFlags: 0
@@ -669,7 +681,7 @@ GameObject:
   - component: {fileID: 1973917668}
   - component: {fileID: 1973917667}
   - component: {fileID: 1973917666}
-  - component: {fileID: 1973917665}
+  - component: {fileID: 1973917670}
   m_Layer: 0
   m_Name: NPC square (1)
   m_TagString: Untagged
@@ -677,19 +689,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1973917665
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1973917664}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ae97f7defd12f1749ae23c256668d142, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NPC
-  newColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!50 &1973917666
 Rigidbody2D:
   serializedVersion: 5
@@ -831,12 +830,24 @@ Transform:
   m_GameObject: {fileID: 1973917664}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.92, y: 1.46, z: 0}
+  m_LocalPosition: {x: -1.18, y: 7.74, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1973917670
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1973917664}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cb83601f250d4742bdd4c4c70ceba34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: "Assembly-CSharp::Desesperaci\xF3n"
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
