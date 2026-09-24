@@ -503,6 +503,7 @@ GameObject:
   - component: {fileID: 1946177823}
   - component: {fileID: 1946177822}
   - component: {fileID: 1946177826}
+  - component: {fileID: 1946177827}
   m_Layer: 0
   m_Name: NPC square
   m_TagString: Untagged
@@ -669,6 +670,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cb83601f250d4742bdd4c4c70ceba34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: "Assembly-CSharp::Desesperaci\xF3n"
+--- !u!114 &1946177827
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1946177820}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65133fad748804b4bb16dd8e78c5a85e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NPCHorizontalMove
 --- !u!1 &1973917664
 GameObject:
   m_ObjectHideFlags: 0
