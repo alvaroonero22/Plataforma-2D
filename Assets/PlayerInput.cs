@@ -111,6 +111,16 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""initialStateCheck"": true,
                     ""priority"": 0
+                },
+                {
+                    ""name"": ""Jump"",
+                    ""type"": ""Button"",
+                    ""id"": ""76cb45bf-935f-479b-aea5-feadc9e7f6eb"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false,
+                    ""priority"": 0
                 }
             ],
             ""bindings"": [
@@ -289,6 +299,28 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""action"": ""MoveHorizontal"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""30bdc62d-4d0a-4dd1-9e3a-56eeb8edee91"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Jump"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a1a58599-e9ae-4e9a-a30a-c480753c8fab"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Jump"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -299,6 +331,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         m_player = asset.FindActionMap("player", throwIfNotFound: true);
         m_player_Move = m_player.FindAction("Move", throwIfNotFound: true);
         m_player_MoveHorizontal = m_player.FindAction("MoveHorizontal", throwIfNotFound: true);
+        m_player_Jump = m_player.FindAction("Jump", throwIfNotFound: true);
     }
 
     ~@PlayerInput()
@@ -381,6 +414,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     private List<IPlayerActions> m_PlayerActionsCallbackInterfaces = new List<IPlayerActions>();
     private readonly InputAction m_player_Move;
     private readonly InputAction m_player_MoveHorizontal;
+    private readonly InputAction m_player_Jump;
     /// <summary>
     /// Provides access to input actions defined in input action map "player".
     /// </summary>
@@ -400,6 +434,10 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "player/MoveHorizontal".
         /// </summary>
         public InputAction @MoveHorizontal => m_Wrapper.m_player_MoveHorizontal;
+        /// <summary>
+        /// Provides access to the underlying input action "player/Jump".
+        /// </summary>
+        public InputAction @Jump => m_Wrapper.m_player_Jump;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -432,6 +470,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @MoveHorizontal.started += instance.OnMoveHorizontal;
             @MoveHorizontal.performed += instance.OnMoveHorizontal;
             @MoveHorizontal.canceled += instance.OnMoveHorizontal;
+            @Jump.started += instance.OnJump;
+            @Jump.performed += instance.OnJump;
+            @Jump.canceled += instance.OnJump;
         }
 
         /// <summary>
@@ -449,6 +490,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @MoveHorizontal.started -= instance.OnMoveHorizontal;
             @MoveHorizontal.performed -= instance.OnMoveHorizontal;
             @MoveHorizontal.canceled -= instance.OnMoveHorizontal;
+            @Jump.started -= instance.OnJump;
+            @Jump.performed -= instance.OnJump;
+            @Jump.canceled -= instance.OnJump;
         }
 
         /// <summary>
@@ -503,5 +547,12 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnMoveHorizontal(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Jump" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnJump(InputAction.CallbackContext context);
     }
 }
