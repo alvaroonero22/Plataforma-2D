@@ -30,7 +30,7 @@ public class Health : MonoBehaviour
         OnHealthChanged.Invoke();
     }
 
-    private void TakeDamage(float damage)
+    public void TakeDamage(float damage)
     {
         ChangeHealth(Mathf.Max(currentHealth - damage, 0));
         OnDamageTaken.Invoke();
@@ -47,5 +47,8 @@ public class Health : MonoBehaviour
         OnHealthIncreased.Invoke();
         OnHealthChanged.Invoke();
     }
-
+    public void IncreaseHealth(float health)
+    {
+        IncreaseHealth(health);
+    }
 }
