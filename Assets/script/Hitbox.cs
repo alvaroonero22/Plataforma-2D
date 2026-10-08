@@ -24,6 +24,7 @@ public class Hitbox : MonoBehaviour
             if (health != null)
             {
                 health.TakeDamage(damage);
+                health.HandleVulnerabilityOnHit();
                 Debug.Log("AUGHHH");
             }
 

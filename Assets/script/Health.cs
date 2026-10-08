@@ -1,14 +1,27 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+
+
 [RequireComponent(typeof(BoxCollider2D))]
 public class Health : MonoBehaviour
 {
     BoxCollider2D boxCollider;
 
-
     float currentHealth;
-   [SerializeField] int maxHealth = 100;
-   [SerializeField] bool canDie;
+    [SerializeField] int maxHealth = 100;
+    [SerializeField] bool canDie = true;
+    bool isVulnerable = true;
+    public float invulnerabilityTime = 2f;
+
+    [SerializeField] Color flashColor;
+    Color originalColor;
+    SpriteRenderer spriteRenderer;
+    [SerializeField] float flashTime = 0.2f;
+
+
+
 
     public UnityEvent OnHealthChanged;
     public UnityEvent OnDamageTaken;
@@ -17,38 +30,65 @@ public class Health : MonoBehaviour
 
     //Getters
     public float CurrentHealth => currentHealth;
-
     public float MaxHealth => maxHealth;
+
     private void Start()
     {
         ChangeHealth(maxHealth);
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        originalColor = spriteRenderer.color;
+        flashColor = new Color(originalColor.r, originalColor.g, originalColor.b, 0.5f); 
     }
 
     private void ChangeHealth(float newHealth)
     {
-        currentHealth = Mathf.Clamp(newHealth, 0, maxHealth);
+        currentHealth = newHealth;
         OnHealthChanged.Invoke();
     }
 
     public void TakeDamage(float damage)
     {
-        ChangeHealth(Mathf.Max(currentHealth - damage, 0));
+        if (!isVulnerable) return;
+
+        ChangeHealth(Mathf.Max(0, currentHealth - damage));
         OnDamageTaken.Invoke();
-        
 
         if (currentHealth == 0 && canDie)
         {
             OnDeath.Invoke();
         }
     }
-    private void IncreaseHealth(float health)
+
+    private void IncreaseHealth(float amountToHeal)
     {
-        ChangeHealth(health);
+        ChangeHealth(Mathf.Min(maxHealth, currentHealth + amountToHeal));
         OnHealthIncreased.Invoke();
-        OnHealthChanged.Invoke();
     }
-    public void IncreaseHealth(float health)
+
+    public void HandleVulnerabilityOnHit()
     {
-        IncreaseHealth(health);
+        if (!isVulnerable) return;
+
+        isVulnerable = false;
+        StartCoroutine(WaitToMakeVulnerable());
+        StartCoroutine(InvulnerabilityFlash());
+    }
+
+    IEnumerator WaitToMakeVulnerable()
+    {
+        yield return new WaitForSeconds(invulnerabilityTime);
+        isVulnerable = true;
+    }
+
+    IEnumerator InvulnerabilityFlash()
+    {
+
+        while (!isVulnerable)
+        {
+            spriteRenderer.color = flashColor;
+            yield return new WaitForSeconds(flashTime);
+            spriteRenderer.color = originalColor;
+            yield return new WaitForSeconds(flashTime);
+        }
     }
 }
