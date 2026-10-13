@@ -29,6 +29,7 @@ public class PlayerMovementEvents : MonoBehaviour
         if (collision.gameObject.CompareTag("Ground"))
         {
             isGrounded = true;
+            Debug.Log("Player is grounded");
         }
     }
 

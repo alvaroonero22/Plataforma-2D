@@ -32,6 +32,8 @@ public class Health : MonoBehaviour
     public float CurrentHealth => currentHealth;
     public float MaxHealth => maxHealth;
 
+    public bool IsVulnerable { get; internal set; }
+
     private void Start()
     {
         ChangeHealth(maxHealth);
